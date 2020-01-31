@@ -8,7 +8,6 @@ use Symfony\Component\HttpClient\HttpClient;
 use Symfony\Component\Validator\Constraint;
 use Symfony\Component\Validator\ConstraintValidator;
 use Symfony\Component\Validator\Exception\UnexpectedValueException;
-use Symfony\Contracts\HttpClient\Exception\ExceptionInterface;
 
 class EmailByDoHValidator extends ConstraintValidator
 {
@@ -121,7 +120,7 @@ class EmailByDoHValidator extends ConstraintValidator
             }
 
             $contents = $response->getContent();
-        } catch (ExceptionInterface $e) {
+        } catch (\Exception $e) {
             return false;
         }
         /**
